@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>You'Scripts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 800;
+      background: #121212;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .description {
+      text-align: center;
+      font-size: 16px;
+      color: #aaa;
+      margin: 30px 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    .card p {
+      margin: 0 0 14px;
+      color: #aaa;
+      font-size: 14px;
+    }
+    .card button {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .card button:hover {
+      box-shadow: 0 4px 12px rgba(0, 255, 204, 0.3);
+    }
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #00ffcc;
+      color: #000;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #222;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 999;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      background-color: #1a1a1a;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      color: #fff;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+    }
+    .modal-content ul {
+      padding-left: 20px;
+    }
+    .modal-content li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .close {
+      color: #00ffcc;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>You'Scripts</header>
+  <div class="description">Todos los scripts de cada experiencia se actualizan automáticamente al mejor.</div>
+
+  <div class="grid">
+    <!-- Blox Fruits -->
+    <div class="card">
+      <img src="https://tr.rbxcdn.com/180DAY-64f0a7a88d9f4d032dce64679cac0fc3/768/432/Image/png/noFilter" alt="Blox Fruits">
+      <div class="card-content">
+        <h3>Blox Fruits</h3>
+        <p>Script para mejorar tu experiencia en Blox Fruits.</p>
+        <button onclick="copyScript(`loadstring(game:HttpGet('https://api.luarmor.net/files/v3/loaders/7d8a2a1a9a562a403b52532e58a14065.lua'))()`)">Copiar script</button>
+        <button onclick="openModal('bloxModal')">Ver descripción</button>
+      </div>
+    </div>
+
+    <!-- Steal a Brainrot -->
+    <div class="card">
+      <div class="badge">Popular</div>
+      <img src="https://tr.rbxcdn.com/180DAY-f18c22df34ec2c4032eb489d8acf7198/768/432/Image/png/noFilter" alt="Steal a Brainrot">
+      <div class="card-content">
+        <h3>Steal a Brainrot</h3>
+        <p>Script cargado desde rifton.top para Brainrot.</p>
+        <button onclick="copyScript(`loadstring(game:HttpGet('https://rifton.top/loader.lua'))()`)">Copiar script</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 You'Scripts — Hecho en RD 🇩🇴</footer>
+
+  <div id="toast">Script copiado al portapapeles</div>
+
+  <!-- Modal Blox Fruits -->
+  <div id="bloxModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('bloxModal')">&times;</span>
+      <h2>Funciones del script Blox Fruits</h2>
+      <ul>
+        <li>Auto Farm Level</li>
+        <li>Auto Farm Mastery (Weapon, Fruit, Gun)</li>
+        <li>Auto Farm Bones</li>
+        <li>Auto Farm Sea Beast / Bosses</li>
+        <li>Auto Farm Raids (Auto Join / Auto Start / Auto Kill)</li>
+        <li>Auto Farm Materials (Leather, Scrap, Ectoplasm, etc.)</li>
+        <li>Auto Chest Farm</li>
+        <li>Auto Observation Farm (Ken Haki)</li>
+        <li>Auto Enhancement / Aura</li>
+        <li>Auto Buy / Auto Store Fruits</li>
+        <li>Auto Drop Fruits</li>
+        <li>Auto Factory Raid</li>
+        <li>Auto Dough Awakening</li>
+        <li>Auto Sea Beast Summon and Kill</li>
+        <li>Auto Crew Hunt (PvP farming)</li>
+        <li>Auto Farm Accessories</li>
+        <li>Auto Sword / Gun / Fruit Collection</li>
+        <li>Auto Buy Haki Colors</li>
+        <li>Fruit Sniper</li>
+        <li>Fruit Finder</li>
+        <li>ESP (Players, Fruits, NPCs, Bosses, Chests)</li>
+        <li>Kill Aura / Silent Aim / Aimbot</li>
+        <li>Auto Dodge</li>
+        <li>Fly / Noclip / WalkSpeed / JumpPower</li>
+        <li>Infinite Geppo / Infinite Energy</li>
+        <li>Anti-AFK</li>
+        <li>Server Hop</li>
+        <li>Safe Mode</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function copyScript(script) {
+      navigator.clipboard.writeText(script)
+        .then(() => {
+          const toast = document.getElementById("toast");
+          toast.style.opacity = "1";
+          setTimeout(() => toast.style.opacity = "0
