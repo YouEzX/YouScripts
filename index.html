@@ -181,6 +181,28 @@
     <img src="logo.png" alt="YouScripts Logo">
   </header>
 
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('scriptGrid');
+    const cards = Array.from(grid.children);
+
+    const popularCards = cards.filter(card =>
+      card.querySelector('.badge')?.textContent.trim().toLowerCase() === 'popular'
+    );
+
+    const otherCards = cards.filter(card =>
+      card.querySelector('.badge')?.textContent.trim().toLowerCase() !== 'popular'
+    );
+
+    // Limpiar el contenedor
+    grid.innerHTML = '';
+
+    // Reinsertar primero los populares, luego los demás
+    [...popularCards, ...otherCards].forEach(card => grid.appendChild(card));
+  });
+</script>
+
+
   <section class="hero">
     <h1>Encuentra los mejores scripts para Roblox</h1>
     <div class="search-box">
@@ -236,9 +258,143 @@ loadstring(game:HttpGet('https://zaphub.xyz/Exec'))()
           </textarea>
         </div>
       </div>
-    </div>
-  </main>
 
-  <footer>© 2025 You'Scripts — Hecho en RD 🇩🇴</footer>
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-617696fdff3ded49d504ebf83fa3e04b/768/432/Image/png/noFilter" alt="Fix It Up">
+  <div class="badge">Actualizado</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>Fix It Up</h3>
+    <p>Fix It Up actualizado.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/VertigoCool99/scripts/refs/heads/main/FixItUp"))()
+    </textarea>
+  </div>
+</div>
 
-  <div id="toast">Script copiado al portap
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-9b372a72aedaf771f524c8e9ff40ac27/512/512/Image/png/noFilter" alt="Pet Simulator X">
+  <div class="badge">Premium</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>Pet Simulator X</h3>
+    <p>Pet Simulator X script premium actualizado.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hackerDashDash/PetSimulatorX/main/PetSimulatorXV2.lua"))()
+    </textarea>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-821d9599ac5c3ebe3ade368489c06110/768/432/Image/png/noFilter" alt="99 Noches en el Bosque">
+  <div class="badge">Popular</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>99 Noches en el Bosque</h3>
+    <p>Script con ESP, teleport y auto farm.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/raygull3d/99-Nights-in-the-Forest-Script/refs/heads/main/99%20Days%20Scirpt%20By%20Raygull.lua"))()
+    </textarea>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-600081d81c133f2c6dc8bb52522f2845/768/432/Image/png/noFilter" alt="Fisch Simulator">
+  <div class="badge">Verificado</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>Fisch Simulator</h3>
+    <p>Fisch Simulator script con auto farm, teleport y captura instantánea.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BRobxStik/fisch-script/main/fisch.lua"))()
+    </textarea>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-c929c9ba9069190914f60bbfe47b6cb9/768/432/Image/png/noFilter" alt="Murder Mystery 2">
+  <div class="badge">Verificado</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>Murder Mystery 2</h3>
+    <p>Script con ESP, auto farm, teleport al arma y más.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Athergaming/Roblox-Murder-Mystery-2-Script/main/AtherHub%20Murder%20Mystery%202%20Script.lua"))()
+    </textarea>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-eb783deba3b661ff753ab9be4089188d/768/432/Image/png/noFilter" alt="Rivals">
+  <div class="badge">Verificado</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>Rivals</h3>
+    <p>Script con aimbot, ESP y silent aim para combate preciso.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Ozair324/Rivals-Op-Script-no-key/refs/heads/main/Rivals%20Op%20Script%20no%20key.lua"))()
+    </textarea>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-73a82e9cd355e86c4379ed5c36eaf2d1/768/432/Image/png/noFilter" alt="Forsaken">
+  <div class="badge">Verificado</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>Forsaken</h3>
+    <p>Script con auto play, ESP, auto farm y anti-AFK.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/zaid7086/Forsaken-Script/refs/heads/main/forsakenscript.lua"))()
+    </textarea>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-ccd8bcf9f66dc37834534d2cb3cfd1b9/768/432/Image/png/noFilter" alt="The Strongest Battlegrounds">
+  <div class="badge">Popular</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>The Strongest Battlegrounds</h3>
+    <p>Script con auto combo, ESP, teleport y sin cooldowns.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LOLking123456/Strongest/main/Battlegrounds77"))()
+    </textarea>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-3c69710523b585b62f53aa0d4c6c32ed/768/432/Image/png/noFilter" alt="Prison Life Admin">
+  <div class="badge">Admin</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>Prison Life</h3>
+    <p>Panel de comandos de admin: kill, teleport, god mode y más.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yenil140/PrisonLifeScript/main/AdminCommands"))()
+    </textarea>
+  </div>
+</div>
+
+<div class="card">
+  <img src="https://tr.rbxcdn.com/180DAY-ea3fdfa096223751507bf01ae3a69419/768/432/Image/png/noFilter" alt="Criminality">
+  <div class="badge">Verificado</div>
+  <div class="count-badge">1 script</div>
+  <div class="card-content">
+    <h3>Criminality</h3>
+    <p>Script con Kill Aura, Silent Aim, Wallbang, ESP y más.</p>
+    <textarea readonly class="script-box">
+👉 Script #1:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/rayparams/criminality/main/loader.lua"))()
+    </textarea>
+  </div>
+</div>
