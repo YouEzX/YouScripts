@@ -20,6 +20,38 @@
       background: #121212;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
+    .hero {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+    .hero h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .search-box {
+      display: flex;
+      justify-content: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .search-box input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      background: #222;
+      color: #fff;
+      font-size: 16px;
+    }
+    .search-box button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 0 8px 8px 0;
+      background: #00ffcc;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+    }
     .description {
       text-align: center;
       font-size: 16px;
@@ -148,16 +180,25 @@
 <body>
 
   <header>You'Scripts</header>
+
+  <section class="hero">
+    <h1>Encuentra los mejores scripts para Roblox</h1>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar scripts..." oninput="buscar()" />
+      <button onclick="buscar()">Buscar</button>
+    </div>
+  </section>
+
   <div class="description">Todos los scripts de cada experiencia se actualizan automáticamente al mejor.</div>
 
-  <div class="grid">
+  <div class="grid" id="scriptGrid">
     <!-- Blox Fruits -->
     <div class="card">
       <img src="https://tr.rbxcdn.com/180DAY-64f0a7a88d9f4d032dce64679cac0fc3/768/432/Image/png/noFilter" alt="Blox Fruits">
       <div class="card-content">
         <h3>Blox Fruits</h3>
         <p>Script para mejorar tu experiencia en Blox Fruits.</p>
-        <button onclick="copyScript(`loadstring(game:HttpGet('https://api.luarmor.net/files/v3/loaders/7d8a2a1a9a562a403b52532e58a14065.lua'))()`)">Copiar script</button>
+        <button onclick="copyScript('loadstring(game:HttpGet(\\'https://api.luarmor.net/files/v3/loaders/7d8a2a1a9a562a403b52532e58a14065.lua\\'))()')">Copiar script</button>
         <button onclick="openModal('bloxModal')">Ver descripción</button>
       </div>
     </div>
@@ -169,7 +210,7 @@
       <div class="card-content">
         <h3>Steal a Brainrot</h3>
         <p>Script cargado desde rifton.top para Brainrot.</p>
-        <button onclick="copyScript(`loadstring(game:HttpGet('https://rifton.top/loader.lua'))()`)">Copiar script</button>
+        <button onclick="copyScript('loadstring(game:HttpGet(\\'https://rifton.top/loader.lua\\'))()')">Copiar script</button>
       </div>
     </div>
   </div>
@@ -185,41 +226,12 @@
       <h2>Funciones del script Blox Fruits</h2>
       <ul>
         <li>Auto Farm Level</li>
-        <li>Auto Farm Mastery (Weapon, Fruit, Gun)</li>
+        <li>Auto Farm Mastery</li>
         <li>Auto Farm Bones</li>
         <li>Auto Farm Sea Beast / Bosses</li>
-        <li>Auto Farm Raids (Auto Join / Auto Start / Auto Kill)</li>
-        <li>Auto Farm Materials (Leather, Scrap, Ectoplasm, etc.)</li>
+        <li>Auto Farm Raids</li>
+        <li>Auto Farm Materials</li>
         <li>Auto Chest Farm</li>
-        <li>Auto Observation Farm (Ken Haki)</li>
+        <li>Auto Observation Farm</li>
         <li>Auto Enhancement / Aura</li>
-        <li>Auto Buy / Auto Store Fruits</li>
-        <li>Auto Drop Fruits</li>
-        <li>Auto Factory Raid</li>
-        <li>Auto Dough Awakening</li>
-        <li>Auto Sea Beast Summon and Kill</li>
-        <li>Auto Crew Hunt (PvP farming)</li>
-        <li>Auto Farm Accessories</li>
-        <li>Auto Sword / Gun / Fruit Collection</li>
-        <li>Auto Buy Haki Colors</li>
-        <li>Fruit Sniper</li>
-        <li>Fruit Finder</li>
-        <li>ESP (Players, Fruits, NPCs, Bosses, Chests)</li>
-        <li>Kill Aura / Silent Aim / Aimbot</li>
-        <li>Auto Dodge</li>
-        <li>Fly / Noclip / WalkSpeed / JumpPower</li>
-        <li>Infinite Geppo / Infinite Energy</li>
-        <li>Anti-AFK</li>
-        <li>Server Hop</li>
-        <li>Safe Mode</li>
-      </ul>
-    </div>
-  </div>
-
-  <script>
-    function copyScript(script) {
-      navigator.clipboard.writeText(script)
-        .then(() => {
-          const toast = document.getElementById("toast");
-          toast.style.opacity = "1";
-          setTimeout(() => toast.style.opacity = "0
+        <li>Auto Buy / Store Fruits</
