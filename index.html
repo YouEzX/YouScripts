@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>You'Scripts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0f0f0f;
+      --card: #1a1a1a;
+      --text: #fff;
+      --muted: #aaa;
+      --accent: #00ffcc;
+      --radius: 12px;
+    }
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #0f0f0f;
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
     }
     header {
       padding: 20px;
@@ -22,10 +33,10 @@
     }
     .hero {
       text-align: center;
-      padding: 40px 20px 20px;
+      padding: 60px 20px 30px;
     }
     .hero h1 {
-      font-size: 28px;
+      font-size: 32px;
       margin-bottom: 20px;
     }
     .search-box {
@@ -36,55 +47,67 @@
     }
     .search-box input {
       flex: 1;
-      padding: 12px;
+      padding: 14px;
       border: none;
       border-radius: 8px 0 0 8px;
       background: #222;
-      color: #fff;
+      color: var(--text);
       font-size: 16px;
     }
     .search-box button {
-      padding: 12px 20px;
+      padding: 14px 20px;
       border: none;
       border-radius: 0 8px 8px 0;
-      background: #00ffcc;
+      background: var(--accent);
       color: #000;
       font-weight: 600;
       cursor: pointer;
     }
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
     .description {
       text-align: center;
       font-size: 16px;
-      color: #aaa;
-      margin: 30px 20px;
+      color: var(--muted);
+      margin-bottom: 30px;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 20px;
-      padding: 0 20px 40px;
-      max-width: 1100px;
-      margin: auto;
     }
     .card {
-      background: #1a1a1a;
-      border-radius: 12px;
+      background: var(--card);
+      border-radius: var(--radius);
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       display: flex;
       flex-direction: column;
       position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 255, 204, 0.3);
     }
     .card img {
       width: 100%;
       height: 160px;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card:hover img {
+      transform: scale(1.05);
     }
     .card-content {
       padding: 16px;
       flex: 1;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
     .card h3 {
       margin: 0 0 10px;
@@ -92,32 +115,44 @@
     }
     .card p {
       margin: 0 0 14px;
-      color: #aaa;
+      color: var(--muted);
       font-size: 14px;
     }
     .card button {
-      background: #00ffcc;
+      align-self: flex-start;
+      background: var(--accent);
       color: #000;
       border: none;
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card button::before {
+      content: "📋";
     }
     .card button:hover {
+      transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 255, 204, 0.3);
+    }
+    .card button:active {
+      transform: scale(0.95);
     }
     .badge {
       position: absolute;
       top: 12px;
       left: 12px;
-      background: #00ffcc;
+      background: var(--accent);
       color: #000;
       font-size: 12px;
       font-weight: 700;
       padding: 4px 10px;
       border-radius: 6px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
     }
     #toast {
       position: fixed;
@@ -133,106 +168,83 @@
       transition: opacity 0.3s ease;
       z-index: 999;
     }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.8);
-    }
-    .modal-content {
-      background-color: #1a1a1a;
-      margin: 5% auto;
-      padding: 20px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 600px;
-      color: #fff;
-    }
-    .modal-content h2 {
-      margin-top: 0;
-    }
-    .modal-content ul {
-      padding-left: 20px;
-    }
-    .modal-content li {
-      margin-bottom: 6px;
-      font-size: 14px;
-    }
-    .close {
-      color: #00ffcc;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
     footer {
       text-align: center;
       padding: 20px;
-      color: #aaa;
+      color: var(--muted);
       font-size: 14px;
     }
   </style>
 </head>
 <body>
-
   <header>You'Scripts</header>
 
   <section class="hero">
     <h1>Encuentra los mejores scripts para Roblox</h1>
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Buscar scripts..." oninput="buscar()" />
+      <input type="text" id="searchInput" placeholder="Buscar scripts..." />
       <button onclick="buscar()">Buscar</button>
     </div>
   </section>
 
-  <div class="description">Todos los scripts de cada experiencia se actualizan automáticamente al mejor.</div>
-
-  <div class="grid" id="scriptGrid">
-    <!-- Blox Fruits -->
-    <div class="card">
-      <img src="https://tr.rbxcdn.com/180DAY-64f0a7a88d9f4d032dce64679cac0fc3/768/432/Image/png/noFilter" alt="Blox Fruits">
-      <div class="card-content">
-        <h3>Blox Fruits</h3>
-        <p>Script para mejorar tu experiencia en Blox Fruits.</p>
-        <button onclick="copyScript(`loadstring(game:HttpGet('https://api.luarmor.net/files/v3/loaders/7d8a2a1a9a562a403b52532e58a14065.lua'))()`)">Copiar script</button>
-        <button onclick="openModal('bloxModal')">Ver descripción</button>
-      </div>
+  <main>
+    <div class="description">
+      Todos los scripts de cada experiencia se actualizan automáticamente al mejor.
     </div>
 
-    <!-- Steal a Brainrot -->
-    <div class="card">
-      <div class="badge">Popular</div>
-      <img src="https://tr.rbxcdn.com/180DAY-f18c22df34ec2c4032eb489d8acf7198/768/432/Image/png/noFilter" alt="Steal a Brainrot">
-      <div class="card-content">
-        <h3>Steal a Brainrot</h3>
-        <p>Script cargado desde rifton.top para Brainrot.</p>
-        <button onclick="copyScript(`loadstring(game:HttpGet('https://rifton.top/loader.lua'))()`)">Copiar script</button>
+    <div class="grid" id="scriptGrid">
+      <div class="card">
+        <img src="https://tr.rbxcdn.com/180DAY-64f0a7a88d9f4d032dce64679cac0fc3/768/432/Image/png/noFilter" alt="Blox Fruits">
+        <div class="card-content">
+          <h3>Blox Fruits</h3>
+          <p>Ejecuta un script para mejorar tu experiencia en el juego Blox Fruits.</p>
+          <button onclick="copyScript('loadstring(game:HttpGet(\'https://api.luarmor.net/files/v3/loaders/7d8a2a1a9a562a403b52532e58a14065.lua\'))()')">Copiar script</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">Popular</div>
+        <img src="https://tr.rbxcdn.com/180DAY-f18c22df34ec2c4032eb489d8acf7198/768/432/Image/png/noFilter" alt="Steal a Brainrot">
+        <div class="card-content">
+          <h3>Steal a Brainrot</h3>
+          <p>Script para el juego Brainrot, cargado desde rifton.top.</p>
+          <button onclick="copyScript('loadstring(game:HttpGet(\'https://rifton.top/loader.lua\'))()')">Copiar script</button>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 
   <footer>© 2025 You'Scripts — Hecho en RD 🇩🇴</footer>
 
   <div id="toast">Script copiado al portapapeles</div>
 
-  <!-- Modal Blox Fruits -->
-  <div id="bloxModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('bloxModal')">&times;</span>
-      <h2>Funciones del script Blox Fruits</h2>
-      <ul>
-        <li>Auto Farm Level</li>
-        <li>Auto Farm Mastery</li>
-        <li>Auto Farm Bones</li>
-        <li>Auto Farm Sea Beast / Bosses</li>
-        <li>Auto Farm Raids</li>
-        <li>Auto Farm Materials</li>
-        <li>Auto Chest Farm</li>
-        <li>Auto Observation Farm</li>
-        <li>Auto Enhancement / Aura</li>
-        <li>Auto Buy / Store Fruits</li>
-        <li>Auto Drop Fruits</li>
+  <script>
+    function copyScript(code) {
+      const temp = document.createElement("textarea");
+      temp.value = code;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      document.body.removeChild(temp);
+      showToast();
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.style.opacity = "1";
+      setTimeout(() => {
+        toast.style.opacity = "0";
+      }, 2000);
+    }
+
+    function buscar() {
+      const term = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".card");
+      cards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = title.includes(term) ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
