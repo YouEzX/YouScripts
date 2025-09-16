@@ -186,6 +186,39 @@
     const grid = document.getElementById('scriptGrid');
     const cards = Array.from(grid.children);
 
+    // Reordenar: primero los populares
+    const popularCards = cards.filter(card =>
+      card.querySelector('.badge')?.textContent.trim().toLowerCase() === 'popular'
+    );
+    const otherCards = cards.filter(card =>
+      card.querySelector('.badge')?.textContent.trim().toLowerCase() !== 'popular'
+    );
+    grid.innerHTML = '';
+    [...popularCards, ...otherCards].forEach(card => grid.appendChild(card));
+
+    // Activar búsqueda por título
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const allCards = grid.querySelectorAll('.card');
+
+      allCards.forEach(card => {
+        const title = card.querySelector('h3')?.textContent.toLowerCase();
+        if (title && title.includes(query)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('scriptGrid');
+    const cards = Array.from(grid.children);
+
     const popularCards = cards.filter(card =>
       card.querySelector('.badge')?.textContent.trim().toLowerCase() === 'popular'
     );
