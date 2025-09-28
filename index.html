@@ -2,13 +2,12 @@
 <html lang="es">
 <head>
 
-<script type='text/javascript' src='//pl27659128.revenuecpmgate.com/e6/90/70/e69070faacf1d845ad1a6e05d0d4e1c1.js'></script>
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>You'Scripts</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
+  
   <style>
     :root {
       --bg: #0f0f0f;
@@ -177,9 +176,84 @@
       color: var(--muted);
       font-size: 14px;
     }
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-box {
+  background: var(--card);
+  padding: 30px;
+  border-radius: var(--radius);
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,255,204,0.3);
+}
+.modal-box h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+.modal-box p {
+  color: var(--muted);
+  margin: 20px 0;
+}
+.modal-box button {
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.filter-tags button {
+  margin: 6px;
+  padding: 10px 16px;
+  background: #222;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.filter-tags button:hover {
+  background: var(--accent);
+  color: #000;
+}
+
   </style>
 </head>
 <body>
+
+  <div id="modalWarning" class="modal-overlay">
+  <div class="modal-box">
+    <h2>⚠️ Advertencia</h2>
+    <p>El uso de scripts puede violar los términos de servicio de Roblox. Úsalos bajo tu propia responsabilidad.</p>
+
+    <div id="termsBox" style="margin-top:20px; text-align:left; font-size:14px; color:var(--muted); max-height:200px; overflow-y:auto;">
+      <h3 style="color:var(--accent); margin-top:0;">Términos y condiciones de uso</h3>
+      <ul style="padding-left: 20px;">
+        <li>Este sitio proporciona scripts con fines educativos y de entretenimiento.</li>
+        <li>El uso de scripts puede violar las reglas de Roblox y resultar en sanciones.</li>
+        <li>No nos responsabilizamos por el uso indebido de los scripts aquí compartidos.</li>
+        <li>Los usuarios deben asegurarse de cumplir con las políticas de cada juego.</li>
+        <li>Al aceptar, reconoces que usas estos scripts bajo tu propio riesgo.</li>
+      </ul>
+    </div>
+
+    <button id="acceptWarning" style="margin-top: 20px;">Entiendo y acepto</button>
+  </div>
+</div>
+
   <header>
     <img src="logo.png" alt="YouScripts Logo">
   </header>
@@ -246,6 +320,15 @@
       <button onclick="buscar()">Buscar</button>
     </div>
   </section>
+
+<div class="filter-tags" style="text-align:center; margin: 30px 0;">
+  <button data-tag="all">Todos</button>
+  <button data-tag="popular">Popular</button>
+  <button data-tag="verificado">Verificado</button>
+  <button data-tag="premium">Premium</button>
+  <button data-tag="admin">Admin</button>
+  <button data-tag="actualizado">Actualizado</button>
+</div>
 
   <main>
     <div class="description">
@@ -322,21 +405,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/hackerDashDash/PetSim
     </textarea>
   </div>
 </div>
-
-<!-- Banner Adsterra 300x250 -->
-<div style="text-align:center; margin: 20px 0;">
-  <script type="text/javascript">
-    atOptions = {
-      'key' : 'b1d31a36eb576f6b66c26c839056797e',
-      'format' : 'iframe',
-      'height' : 250,
-      'width' : 300,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//adjoinartistic.com/b1d31a36eb576f6b66c26c839056797e/invoke.js"></script>
-</div>
-
 
 <div class="card">
   <img src="https://tr.rbxcdn.com/180DAY-821d9599ac5c3ebe3ade368489c06110/768/432/Image/png/noFilter" alt="99 Noches en el Bosque">
@@ -422,21 +490,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/LOLking123456/Stronge
   </div>
 </div>
 
-<!-- Banner Adsterra 300x250 -->
-<div style="text-align:center; margin: 20px 0;">
-  <script type="text/javascript">
-    atOptions = {
-      'key' : 'b1d31a36eb576f6b66c26c839056797e',
-      'format' : 'iframe',
-      'height' : 250,
-      'width' : 300,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//adjoinartistic.com/b1d31a36eb576f6b66c26c839056797e/invoke.js"></script>
-</div>
-
-
 <div class="card">
   <img src="https://tr.rbxcdn.com/180DAY-3c69710523b585b62f53aa0d4c6c32ed/768/432/Image/png/noFilter" alt="Prison Life Admin">
   <div class="badge">Admin</div>
@@ -464,15 +517,59 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/rayparams/criminality
     </textarea>
   </div>
 </div>
-<script type='text/javascript' src='//adjoinartistic.com/86/a6/25/86a625cc1c1002fceb21ec8a893e7ccb.js'></script>
 
-<script type="text/javascript">
-  atOptions = {
-    'key' : '715be145a66ba06bdd5d797dd84f9c2f',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
 </script>
-<script type="text/javascript" src="//adjoinartistic.com/715be145a66ba06bdd5d797dd84f9c2f/invoke.js"></script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modalWarning');
+    const acceptBtn = document.getElementById('acceptWarning');
+
+    acceptBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modalWarning');
+    const acceptBtn = document.getElementById('acceptWarning');
+    const showTermsBtn = document.getElementById('showTerms');
+    const termsBox = document.getElementById('termsBox');
+
+    acceptBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    showTermsBtn.addEventListener('click', () => {
+      termsBox.style.display = termsBox.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modalWarning');
+    const acceptBtn = document.getElementById('acceptWarning');
+
+    acceptBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  });
+</script>
+
+<script>
+  document.querySelectorAll('.filter-tags button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag;
+      document.querySelectorAll('.card').forEach(card => {
+        const badge = card.querySelector('.badge')?.textContent.toLowerCase();
+        card.style.display = (tag === 'all' || badge === tag) ? 'block' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
